@@ -1,5 +1,7 @@
 import { useAppSelector } from '@/hooks/hooks';
 import { filterTasks, selectTasks } from '@/redux/task/taskSlice';
+import TaskCard from './taskCard';
+import { AddTaskModal } from './AddTaskModal';
 
 
 
@@ -10,8 +12,13 @@ const Tasks = () => {
  console.log(filter);
  
     return (
-        <div>
-            <h1>task</h1>
+        <div className='space-y-2 max-w-7xl mx-auto'>
+            <div className='flex justify-end items-center'>
+               <AddTaskModal/>
+            </div>
+           {
+            tasks.map(task => <TaskCard task={task} key={task.id}></TaskCard>)
+           }
         </div>
     );
 };

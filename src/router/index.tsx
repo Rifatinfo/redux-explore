@@ -1,6 +1,6 @@
 import Home from "@/components/ui/Home/Home";
 import About from "@/pages/About";
-import Tasks from "@/pages/tasks";
+import Tasks from "@/pages/Tasks";
 import { createBrowserRouter } from "react-router";
 
 

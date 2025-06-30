@@ -13,14 +13,14 @@ const initialState : InitialState = {
             title: "Initial fronted",
             description: "Create Home , and routing",
             dueDate: "2025-11",
-            isCompleted: "High"
+            isCompleted: "High" 
         },
         {
             id: "834987968778785568875",
             title: "Initial fronted With GitHub",
             description: "Create Home , and routing",
             dueDate: "2025-11",
-            isCompleted: "High"
+            isCompleted: "Low"
         },
     ],
     filter : "All"
