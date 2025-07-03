@@ -63,10 +63,10 @@ export function AddTaskModal() {
                         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
                             <FormField
                                 control={form.control}
-                                name="name"
+                                name="title"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Name</FormLabel>
+                                        <FormLabel>title</FormLabel>
                                         <FormControl>
                                             <Input placeholder="Enter name" {...field} value={field.value || ""} />
                                         </FormControl>
@@ -76,12 +76,12 @@ export function AddTaskModal() {
 
                             <FormField
                                 control={form.control}
-                                name="username"
+                                name="description"
                                 render={({ field }) => (
                                     <FormItem>
                                         <FormLabel>Username</FormLabel>
                                         <FormControl>
-                                            <Input placeholder="@username" {...field} />
+                                            <Input placeholder="description" {...field} />
                                         </FormControl>
                                     </FormItem>
                                 )}
@@ -90,10 +90,10 @@ export function AddTaskModal() {
                             {/* select filed  */}
                             <FormField
                                 control={form.control}
-                                name="email"
+                                name="isCompleted"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Email</FormLabel>
+                                        <FormLabel>isCompleted</FormLabel>
                                         <Select onValueChange={field.onChange} defaultValue={field.value}>
                                             <FormControl className="w-full border">
                                                 <SelectTrigger>
@@ -101,9 +101,8 @@ export function AddTaskModal() {
                                                 </SelectTrigger>
                                             </FormControl>
                                             <SelectContent>
-                                                <SelectItem value="m@example.com">m@example.com</SelectItem>
-                                                <SelectItem value="m@google.com">m@google.com</SelectItem>
-                                                <SelectItem value="m@support.com">m@support.com</SelectItem>
+                                                <SelectItem value="height">Height</SelectItem>
+                                                <SelectItem value="low">Low</SelectItem>
                                             </SelectContent>
                                         </Select>
                                     </FormItem>
