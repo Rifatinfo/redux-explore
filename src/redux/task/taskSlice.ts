@@ -2,6 +2,7 @@ import type { ITask } from "@/types/types";
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../store/store";
 import { v4 as uuidv4 } from 'uuid';
+// import { el } from "date-fns/locale";
 
 interface InitialState {
     tasks: ITask[],
@@ -15,7 +16,7 @@ const initialState: InitialState = {
             title: "Initial fronted",
             description: "Create Home , and routing",
             dueDate: "2025-11",
-            isCompleted: "High",
+            isCompleted: "Height",
             isTask: true
         },
         {
@@ -27,7 +28,7 @@ const initialState: InitialState = {
             isTask: false
         },
     ],
-    filter: "All"
+    filter: "All" 
 }
 
 type DraftTask = Pick<ITask, "title" | "description" | "dueDate" | "isCompleted">
@@ -39,11 +40,6 @@ const taskSlice = createSlice({
     initialState,
     reducers: {
         addTask: (state, action: PayloadAction<DraftTask>) => {
-            // const id = uuidv4();
-            // const taskData = {
-            //     ...action.payload,
-            //     id,
-            // };
             const taskData = createTask(action.payload)
             state.tasks.push(taskData);
         },
@@ -52,15 +48,28 @@ const taskSlice = createSlice({
         },
         deleteTask: (state, action: PayloadAction<string>) => {
             state.tasks = state.tasks.filter((task) => task.id != action.payload)
+        },
+        updateFilter : (state, action: PayloadAction<"All" | "Height" | "Low">) => {
+            state.filter = action.payload;
         }
     },
 })
 
 export const selectTasks = (state: RootState) => {
-    return state.todo.tasks;
+    const filter = state.todo.filter;
+    if(filter === "Low"){
+       return state.todo.tasks.filter((task) => task.isCompleted === "Low");
+    }
+    else if(filter === "Height"){
+       return state.todo.tasks.filter((task) => task.isCompleted === "Height");
+    }
+    else{
+        return state.todo.tasks;
+    }
+
 }
 export const filterTasks = (state: RootState) => {
     return state.todo.filter;
 }
-export const { addTask, toggleCompleteState, deleteTask } = taskSlice.actions;
+export const { addTask, toggleCompleteState, deleteTask , updateFilter} = taskSlice.actions;
 export default taskSlice.reducer;
