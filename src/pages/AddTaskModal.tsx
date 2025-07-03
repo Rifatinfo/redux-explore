@@ -19,19 +19,24 @@ import {
 import { Input } from "@/components/ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useAppDispatch } from "@/hooks/hooks";
 import { cn } from "@/lib/utils";
+import { addTask } from "@/redux/task/taskSlice";
+import type { ITask } from "@/types/types";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
-import { useForm } from "react-hook-form";
+import { useForm,  type FieldValues, type SubmitHandler } from "react-hook-form";
 
 export function AddTaskModal() {
+    const dispatch = useAppDispatch();
     const form = useForm();
 
-    const onSubmit = (data: unknown) => {
+    const onSubmit : SubmitHandler<FieldValues> = (data) => {
         console.log("Form Data:", data);
-        form.reset();
+        dispatch(addTask(data as ITask));
     };
-
+   
+   
     return (
         <Dialog>
             <DialogTrigger asChild>

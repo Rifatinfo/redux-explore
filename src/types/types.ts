@@ -4,4 +4,5 @@ export interface ITask {
   description: string;
   dueDate: string;     
   isCompleted: string; 
+  isTask : boolean
 }

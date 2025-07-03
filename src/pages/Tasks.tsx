@@ -1,7 +1,8 @@
 import { useAppSelector } from '@/hooks/hooks';
 import { filterTasks, selectTasks } from '@/redux/task/taskSlice';
-import TaskCard from './taskCard';
+// import TaskCard from './taskCard';
 import { AddTaskModal } from './AddTaskModal';
+import TaskCard from './TaskCard';
 
 
 
