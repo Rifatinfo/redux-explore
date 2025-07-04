@@ -20,15 +20,18 @@ import { Input } from "@/components/ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useAppDispatch } from "@/hooks/hooks";
+import { useAppDispatch, useAppSelector } from "@/hooks/hooks";
 import { cn } from "@/lib/utils";
 import { addTask, updateFilter } from "@/redux/task/taskSlice";
+import { selectUsers } from "@/redux/user/userSlice";
 import type { ITask } from "@/types/types";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
 
 export function AddTaskModal() {
+     const users = useAppSelector(selectUsers);
+   
     const dispatch = useAppDispatch();
     const form = useForm();
 
@@ -103,6 +106,30 @@ export function AddTaskModal() {
                                             <SelectContent>
                                                 <SelectItem value="height">Height</SelectItem>
                                                 <SelectItem value="low">Low</SelectItem>
+                                            </SelectContent>
+                                        </Select>
+                                    </FormItem>
+                                )}
+                            />
+
+                            {/* select user assigned  */}
+                            <FormField
+                                control={form.control}
+                                name="assignedTo"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Assigned To</FormLabel>
+                                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                            <FormControl className="w-full border">
+                                                <SelectTrigger>
+                                                    <SelectValue placeholder="Select a verified email to display" />
+                                                </SelectTrigger>
+                                            </FormControl>
+                                            <SelectContent>
+                                               
+                                                {users.map((user) => (
+                                                     <SelectItem  value={user.id}>{user.name}</SelectItem>
+                                                ))}
                                             </SelectContent>
                                         </Select>
                                     </FormItem>

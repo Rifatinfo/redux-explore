@@ -4,11 +4,12 @@
   description: string;
   dueDate: string;     
   isCompleted: string; 
-  isTask : boolean
+  isTask : boolean,
+  assignedTo : string | null
 }
 
 interface IUser {
-  id: string,
+ id: string,
  name : string
 }
 

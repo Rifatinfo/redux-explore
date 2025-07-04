@@ -6,6 +6,7 @@ interface IProps {
 }
 const UserCard = ({ user }: IProps) => {
     const dispatch = useDispatch();
+    
   return (
     <div>
       <div className="flex justify-between items-center p-4 bg-black text-white">

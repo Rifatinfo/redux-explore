@@ -1,6 +1,7 @@
-import { useAppDispatch } from "@/hooks/hooks";
+import { useAppDispatch, useAppSelector } from "@/hooks/hooks";
 import { cn } from "@/lib/utils";
 import { deleteTask, toggleCompleteState } from "@/redux/task/taskSlice";
+import { selectUsers } from "@/redux/user/userSlice";
 import type { ITask } from "@/types/types";
 
 interface IProps {
@@ -9,6 +10,10 @@ interface IProps {
 
 const TaskCard = ({task} : IProps) => {
     const dispatch = useAppDispatch();
+    const users = useAppSelector(selectUsers);
+    const assignedUser = users.find((user) => user.id === task.assignedTo);
+    // console.log(assignedUser);
+    
     return (
         <div>
             <div className="bg-zinc-900 text-white p-4 rounded-md flex justify-between items-start shadow-md">
@@ -21,6 +26,8 @@ const TaskCard = ({task} : IProps) => {
                         <h3 className={cn({"text-sm font-medium line-through" : task.isTask})}>{task.title}</h3>
                     </div>
                     <p className="text-xs  mt-1 text-white">{task.description}</p>
+                    <p className="text-xs  mt-1 text-white">Assigned To - {assignedUser ? assignedUser.name : "No One"}</p>
+                    {/* <p className="text-xs  mt-1 text-white">Assigned To - {task.assignedTo || "not Found"}</p> */}
                 </div>
                 <button className="text-white hover:white not-odd:transition font-bold flex items-center">
                     <input checked={task.isTask} type="checkbox" onClick={() => dispatch(toggleCompleteState(task.id))} />

@@ -11,27 +11,32 @@ interface InitialState {
 
 const initialState: InitialState = {
     tasks: [
-        {
-            id: "834798375349875",
-            title: "Initial fronted",
-            description: "Create Home , and routing",
-            dueDate: "2025-11",
-            isCompleted: "Height",
-            isTask: true
-        },
-        {
-            id: "834987968778785568875",
-            title: "Initial fronted With GitHub",
-            description: "Create Home , and routing",
-            dueDate: "2025-11",
-            isCompleted: "Low",
-            isTask: false
-        },
+        // {
+        //     id: "834798375349875",
+        //     title: "Initial fronted",
+        //     description: "Create Home , and routing",
+        //     dueDate: "2025-11",
+        //     isCompleted: "Height",
+        //     isTask: true
+            
+
+        // },
+        // {
+        //     id: "834987968778785568875",
+        //     title: "Initial fronted With GitHub",
+        //     description: "Create Home , and routing",
+        //     dueDate: "2025-11",
+        //     isCompleted: "Low",
+        //     isTask: false
+           
+        // },
     ],
     filter: "All" 
 }
 
 type DraftTask = Pick<ITask, "title" | "description" | "dueDate" | "isCompleted">
+
+
 const createTask = (taskData: DraftTask): ITask => {
     return { id: uuidv4(), ...taskData, isTask: false }
 }
