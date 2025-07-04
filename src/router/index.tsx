@@ -1,6 +1,7 @@
 import Home from "@/components/ui/Home/Home";
 import About from "@/pages/About";
 import Tasks from "@/pages/Tasks";
+import User from "@/pages/User";
 import { createBrowserRouter } from "react-router";
 
 
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
        {
          path : "/tasks",
          element : <Tasks/>
+       },
+       {
+         path : "/user",
+         element : <User/>
        }
     ]
   },

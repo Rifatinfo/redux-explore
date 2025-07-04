@@ -1,4 +1,4 @@
-export interface ITask {
+ interface ITask {
   id: string;
   title: string;
   description: string;
@@ -6,3 +6,10 @@ export interface ITask {
   isCompleted: string; 
   isTask : boolean
 }
+
+interface IUser {
+  id: string,
+ name : string
+}
+
+export type {ITask, IUser}

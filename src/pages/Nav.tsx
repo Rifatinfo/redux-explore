@@ -8,6 +8,7 @@ const Nav = () => {
             <ModeToggle/>
             <div>
                 <Button><Link to="/tasks">tasks</Link></Button>
+                <Button><Link to="/user">User</Link></Button>
             </div>
         </div>
     );
