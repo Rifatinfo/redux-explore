@@ -162,7 +162,7 @@ export function AddTaskModal() {
                         </form>
                     </Form>
                 </DialogContent>
-            </Dialog>
+                </Dialog>
             </div>
 
             
